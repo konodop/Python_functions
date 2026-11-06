@@ -1,22 +1,12 @@
-list1 = [{"id": 1, "name": "Alice"}, {"id": 2, "name": "Bob"}]
-list2 = [{"id": 2, "name": "Bob"}, {"id": 3, "name": "Charlie"}]
+import re
 
-print("list1:", list1, "\nlist2:", list2, "\n")
 
-both = []
-uniq_1 = []
-uniq_2 = []
+def find_abbr(s: str) -> list:
+    abbr = re.findall(r'\b[А-ЯA-Z]{2,6}\b', s)
+    return abbr
 
-for i in list1:
-    if i in list2:
-        both.append(i)
-    else:
-        uniq_1.append(i)
 
-for i in list2:
-    if i not in list1:
-        uniq_2.append(i)
+string = input()
+res = find_abbr(string)
 
-print("Общие:", *both)
-print("Уникальны для первого:", *uniq_1)
-print("Уникальны для второго:", *uniq_2)
+print(*res)

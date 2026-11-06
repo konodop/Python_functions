@@ -1,16 +1,23 @@
-text = input().lower()
+def fib(need: int, a=1, b=0, now=1) -> int:
+    """
+    :param need: запрашиваемое число из ряда фибоначи
+    :param a: первое число фибоначи используемое для вычисления
+    :param b: второе число фибоначи используемое для вычисления
+    :param now: длинна посчитанного ряда фибоначи
+    :return: вывод запрашиваемого числа
+    """
+    if need == 0:
+        return b
+    elif need <= now:
+        return a
 
-words = {}
+    res = fib(need, a + b, a, now + 1)
 
-for elem in text.split():
-    word = words.get(elem)
+    return res
 
-    if not word:
-        words[elem] = 1
-    else:
-        words.update({elem: word + 1})
 
-top = (sorted(words.items(), key=lambda x: x[1], reverse=True))
+inp = int(input())
 
-top_5 = [item[0] for item in top[:5]]
-print("Пять самых встречающихся слов:", *top_5)
+otvet = fib(inp)
+
+print(otvet)

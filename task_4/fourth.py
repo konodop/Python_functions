@@ -1,20 +1,22 @@
-items = [
-    ("apple", "fruit"),
-    ("banana", "fruit"),
-    ("carrot", "vegetable"),
-    ("tomato", "vegetable"),
-    ("milk", "dairy")
-]
-items_dict = {}
+def factorial(n: int) -> str:
+    """
+    :param n: число до которого генерируются факториалы
+    :return: выводит факториал от now
+    """
+    now = 0
+    result = 1
 
-print(items, "\n")
+    while now <= n:
 
-for elem in items:
-    product, typ = elem
+        yield result
 
-    if typ not in items_dict.keys():
-        items_dict[typ] = [product]
-    else:
-        items_dict[typ].append(product)
+        now += 1
+        result *= now
 
-print(items_dict)
+
+n = int(input())
+
+gen = factorial(n)
+
+for i in gen:
+    print(i)
